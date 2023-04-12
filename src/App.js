@@ -18,7 +18,7 @@ function App() {
       );
     }
     return (
-      <div>
+      <div className='mole-hills'>
         {hills}
       </div>
     )

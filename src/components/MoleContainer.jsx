@@ -1,10 +1,26 @@
+import { useState } from "react"
 import Mole from "./Mole"
+import Empty from "./Empty"
 
-export default function MoleContainer() {
+export default function MoleContainer({ setScore, score }) {
+
+    const [isShowing, setIsShowing] = useState(false)
+    const onMoleClick = e => {
+        if (isShowing) {
+            setScore(score + 1)
+            setIsShowing(false)
+        }
+    }
     return (
         <div className="mole-conatiner">
-            <h2>Mole Container</h2>
-            <Mole />
+            {
+                isShowing ?
+                    <Mole
+                        onMoleClick={onMoleClick}
+                        setIsShowing={setIsShowing} />
+                    :
+                    <Empty setIsShowing={setIsShowing} />
+            }
         </div>
     )
 }
